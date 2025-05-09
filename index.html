@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ZK-Rollup Demo – XZRC</title>
+</head>
+<body style="background-color:#001f2f; color:white; font-family:sans-serif; text-align:center;">
+    <h1>ZK-Rollup Demo – XZRC</h1>
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <p id="wallet">Not connected</p>
+    <input type="text" id="recipient" placeholder="Recipient Address" />
+    <input type="text" id="amount" placeholder="Amount (XZRC)" />
+    <button onclick="send()">Send</button>
+
+    <script>
+        async function connectWallet() {
+            if (window.ethereum) {
+                const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                document.getElementById('wallet').innerText = 'Connected: ' + accounts[0];
+            } else {
+                alert('Please install MetaMask.');
+            }
+        }
+
+        function send() {
+            const to = document.getElementById('recipient').value;
+            const amount = document.getElementById('amount').value;
+            alert('Pretend sending ' + amount + ' XZRC to ' + to);
+            // Buraya gerçek ERC20 gönderim kodları entegre edilebilir
+        }
+    </script>
+</body>
+</html>
